@@ -69,11 +69,8 @@ stock GetVehicleType(model) {
 }
 
 
-stock CopyArray({Float, _}:buffer[], const {Float, _}:source[], size) {
-	for(new i; i < size; i++) {
-		buffer[i] = source[i];
-	}
-}
+#define CopyArray(%0,%1,%2); for(new _@_i; _@_i < %2; _@_i++) %0[_@_i] = %1[_@_i];
+
 
 stock PlayerToKvadrat(playerid,Float:min_x,Float:min_y,Float:max_x,Float:max_y) {
     new Float:xxp,Float:yyp,Float:zzp;

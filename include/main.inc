@@ -17,6 +17,7 @@
 #define issqlnull(%0)				(strcmp(%0,"NULL",false)==0)
 
 #define debug(%0,%1)				printf("[debug] "#%0"",%1)
+#define log::%0(%1,%2)				printf("["#%0"] "#%1"",%2)
 
 #define public:%0(%1) forward %0(%1); public %0(%1)
 

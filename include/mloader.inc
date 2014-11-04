@@ -81,8 +81,8 @@ stock map::Load(const mapfile[], worldid=-1, interiorid=-1, playerid=-1, Float:s
 			DynamicMaps[id][e_MapStreamDist] = streamdistance;
 		
 			while(fread(fhandle, buffer[0])) {
-				if(strcut(buffer[0], buffer[1], "CreateObject(", ")")
-				|| strcut(buffer[0], buffer[1], "CreateDynamicObject(", ")")) {
+				if(parse(buffer[0], buffer[1], "CreateObject(", ")")
+				|| parse(buffer[0], buffer[1], "CreateDynamicObject(", ")")) {
 					new modelid, Float:pos[3], Float:rot[3];
 					sscanf(buffer[1], "p<,>ia<f>[3]a<f>[3]", modelid, pos, rot);
 					if(CreateDynamicObject(modelid, pos[0], pos[1], pos[2], rot[0], rot[1], rot[2], worldid, interiorid, playerid, streamdistance) == INVALID_OBJECT_ID) {
@@ -263,7 +263,7 @@ stock map::DestroyAllMaps() {
 	return 1;
 }
 
-stock strcut(dest[], buffer[], l[], r[], maxlen=sizeof buffer) {
+stock parse(dest[], buffer[], l[], r[], maxlen=sizeof buffer) {
 	new lpos = strfind(dest, l, true);
 	if(lpos != -1) {
 		new rpos = strfind(dest, r, true, lpos);
