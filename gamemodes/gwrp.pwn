@@ -14967,16 +14967,16 @@ stock LoadGates() {
 						new pos = strfind(buff[1], ",", false);
 						while((pos = strfind(buff[1], ",", false)) != -1) {
 							buff[1][pos] = '\0';
-							sscanf(buff[1]][oldpos], "k<team>", fracid);
+							sscanf(buff[1][oldpos], "k<team>", fracid);
 							val[fracid] = 1;
 							oldpos = pos;
 						}
-						sscanf(buff[1]][oldpos+1], "k<team>", fracid);
+						sscanf(buff[1][oldpos+1], "k<team>", fracid);
 						val[fracid] = 1;
 						
 						switch(fracid) {
-							case 1001, 1002 : GateData[ptr][GateAllowed] = value;
-							default : GateData[ptr][GateAllowed] += value << fracid;
+							case 1001, 1002 : GateData[ptr][GateAllowed] = val[fracid];
+							default : GateData[ptr][GateAllowed] += val[fracid] << fracid;
 						}
 						act ++;
 						if(gateid!=INVALID_GATE_ID) {
