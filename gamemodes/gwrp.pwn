@@ -13544,7 +13544,7 @@ public: _ShowOffline(playerid, id) {
 					cache_get_row(rows, 0, name);
 					cache_get_int(rows, 1, helper);
 					cache_get_row(rows, 2, lastdate);
-					if(1 <= helper <= 3) {
+					if(helper > 0) {
 						helperid = ReturnUser(name);
 						if(!Pl::isLogged(helperid)) {
 							num ++;
@@ -13571,7 +13571,7 @@ public: _ShowOffline(playerid, id) {
 					cache_get_row(rows, 0, name);
 					cache_get_int(rows, 1, admin);
 					cache_get_row(rows, 2, lastdate);
-					if(1 <= admin <= 5) {
+					if(admin > 0) {
 						adminid = ReturnUser(name);
 						if(!Pl::isLogged(adminid)) {
 							num ++;
